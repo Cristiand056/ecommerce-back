@@ -1,0 +1,78 @@
+{
+  "kind": "collectionType",
+  "collectionName": "oders",
+  "info": {
+    "singularName": "oder",
+    "pluralName": "oders",
+    "displayName": "Oder"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "orderNumber": {
+      "type": "uid"
+    },
+    "statusOrder": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "processing",
+        "shipping",
+        "delivered",
+        "canceled"
+      ]
+    },
+    "total": {
+      "type": "decimal",
+      "required": true
+    },
+    "customerNomber": {
+      "type": "string",
+      "required": true
+    },
+    "haveLicorTheOrder": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "CC": {
+      "type": "string",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "haveLicorTheOrder"
+            },
+            true
+          ]
+        }
+      },
+      "required": true
+    },
+    "userEmail": {
+      "type": "email",
+      "required": true,
+      "unique": false
+    },
+    "shippingAddress": {
+      "type": "string",
+      "required": true
+    },
+    "items": {
+      "type": "json",
+      "required": true
+    },
+    "useId": {
+      "type": "string",
+      "required": true
+    },
+    "subtotal": {
+      "type": "decimal"
+    },
+    "paymentIntentId": {
+      "type": "string"
+    }
+  }
+}
